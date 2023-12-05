@@ -40,7 +40,7 @@ system($cmd);
 # make a customized_bootstrap.scss file
 $str = <<STR_END;
 \$primary: pink;
-\$secondary: green;
+\$secondary: blue;
 \@import "../node_modules/bootstrap/scss/bootstrap";
 STR_END
 make_path("./sass/");
@@ -72,6 +72,6 @@ close $fh;
 
 # start chrome using our customised bootstrap css file and a test html file
 my $cwd = getcwd;
-my $html_file_full_path = $cwd."/bs_setup.html";
+my $html_file_full_path = $cwd."/bootstrap-npm-install-and-compile-customised-bootstrap-test-sample.html";
 qx(start chrome $html_file_full_path);
 
