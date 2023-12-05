@@ -7,7 +7,6 @@ require "./MySubs1.pm";
 require "./MySubs2.pm";
 require "./MySubs3.pm";
 require "./MySubs5.pm";
-require "./MySubs6.pm";
 require "./MySubs10.pm";
 require "./MySubs11.pm";
 require "./MySubs12.pm";

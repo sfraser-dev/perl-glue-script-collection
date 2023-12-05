@@ -3,6 +3,8 @@ package MySubs11;
 use warnings;
 use strict;
 
+require "./MySubs5.pm";
+
 sub createCornixFreeTextSimpleTemplate {
 	my $pair=$_[0];
 	my $leverage=$_[1];
@@ -24,15 +26,15 @@ sub createCornixFreeTextSimpleTemplate {
 
 	# note: Need to set up each Cornix client (bot configuration - trading) with desired entry and target distributions
 	# note: Need to do this for each individual client, there is no global setting for this
-	my $sl = MySubs7::formatToVariableNumberOfDecimalPlaces($stopLoss,$noDecimalPlacesForEntriesTargetsAndSLs);
+	my $sl = MySubs5::formatToVariableNumberOfDecimalPlaces($stopLoss,$noDecimalPlacesForEntriesTargetsAndSLs);
 	
 	# Set weighting factors set to 0 (Cornix Free Text simple mode cannot set percentage weighting factors at all)
 	# Cornix Free Text simple mode can only setsentry, target and stop-loss VALUES, it cannot set weighting factor percentages
 	# Only in Cornix Free Text advanced mode (when choose to edit trade) can we set weighting factor percentages 
 	my $weightingFactorEntries=0;
 	my $weightingFactorTargets=0;
-	my @strArrEntries = MySubs6::HeavyWeightingAtEntryOrStoploss("entries",$noOfEntries,$highEntry,$lowEntry,$isTradeALong,$weightingFactorEntries,$noDecimalPlacesForEntriesTargetsAndSLs);
-	my @strArrTargets = MySubs6::HeavyWeightingAtEntryOrStoploss("targets",$noOfTargets,$highTarget,$lowTarget,$isTradeALong,$weightingFactorTargets,$noDecimalPlacesForEntriesTargetsAndSLs);
+	my @strArrEntries = MySubs5::HeavyWeightingAtEntryOrStoploss("entries",$noOfEntries,$highEntry,$lowEntry,$isTradeALong,$weightingFactorEntries,$noDecimalPlacesForEntriesTargetsAndSLs);
+	my @strArrTargets = MySubs5::HeavyWeightingAtEntryOrStoploss("targets",$noOfTargets,$highTarget,$lowTarget,$isTradeALong,$weightingFactorTargets,$noDecimalPlacesForEntriesTargetsAndSLs);
 	
 	my @entryVals;
 	my @targetVals;
@@ -40,7 +42,7 @@ sub createCornixFreeTextSimpleTemplate {
 	for my $i (0 .. $#strArrEntries) {
 		my @splitter=split / /, $strArrEntries[$i];	# split line using spaces, [0]=1), [1]=value, [2]=hyphen, [3]=percentage
 		my $val = ($splitter[1]);
-		push(@entryVals, MySubs7::formatToVariableNumberOfDecimalPlaces($val,$noDecimalPlacesForEntriesTargetsAndSLs));
+		push(@entryVals, MySubs5::formatToVariableNumberOfDecimalPlaces($val,$noDecimalPlacesForEntriesTargetsAndSLs));
 	}
 	# get all the target values
 	for my $i (0 .. $#strArrTargets) {
