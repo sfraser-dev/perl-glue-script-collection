@@ -26,10 +26,10 @@ my @allArr;
 my @splitter;
 
 # top level folder of containing videos to be fixed; this folder must exist (subdirs in this folder also searched)
-my $vidOriginalsFolder = "F:\\VIDEO_FIX\\mpegToH264";  # use double-backslashes ('\\') in the pathname
+my $vidOriginalsFolder = ".\\";  # use double-backslashes ('\\') in the pathname
 
 if (-d $vidOriginalsFolder){
-    say "converting .mpg videos in folder '$vidOriginalsFolder' and it's sub-folders";
+    say "converting videos in folder '$vidOriginalsFolder' and it's sub-folders";
 }
 else {
     say "Error: folder '$vidOriginalsFolder' doesn't exist, please point to the folder containing the videos to be converted.";
@@ -45,7 +45,7 @@ foreach my $vidName (@content) {
     ($name,$fileDir,$ext) = fileparse($vidName,'\..*');
     $fileDir =~ s/\//\\/g;
     $originalFileNameFullPath="$fileDir$name$ext";
-    $convertedFileNameFullPath="$fileDir$name\.mp4";
+    $convertedFileNameFullPath="$fileDir$name"."--new--"."\.mp4";
     $strData = $originalFileNameFullPath."===".$convertedFileNameFullPath;
     # full paths of videos to be converted stored in an array
     push(@allArr, $strData);
@@ -56,12 +56,12 @@ foreach (@allArr){
     @splitter = split(/===/, $_);
     $originalFileNameFullPath=$splitter[0];
     $convertedFileNameFullPath=$splitter[1];
-    system("ffmpeg -i $originalFileNameFullPath -f mp4 $convertedFileNameFullPath");
+    system("ffmpeg -i $originalFileNameFullPath -f mp4 -crf 38 $convertedFileNameFullPath");
 }
 
-# find files with ".mpg" at the end of their names
+# find files
 sub fileWanted {
-    if ($File::Find::name =~ /\.mpg$/){
+    if ($File::Find::name =~ /\.mp4$/){
         push @content, $File::Find::name;
     }
     return;
