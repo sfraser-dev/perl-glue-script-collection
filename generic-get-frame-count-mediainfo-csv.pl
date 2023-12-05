@@ -4,6 +4,7 @@
 
 # requires MediaInfo CLI:
 # https://mediaarea.net/en/MediaInfo/Download/Windows
+# choco install mediainfo-cli
 
 use strict;
 use warnings;
