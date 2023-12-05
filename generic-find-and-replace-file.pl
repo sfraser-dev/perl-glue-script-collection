@@ -26,7 +26,7 @@ foreach my $fileIn (@content) {
     my @linesOut;
     # process
     foreach my $line (@linesIn) {
-        $line =~ s/Path="\.\/DorsaLista"/Path="\.\/Dorsalista"/g;
+        $line =~ s/\brEd\b/GOLD/i;
         push @linesOut, $line;
     }
     # write processed array to file
@@ -43,7 +43,7 @@ exit;
 
 sub fileWanted{
     my $file = $File::Find::name;
-    if ($file =~ /\.xml$/){
+    if ($file =~ /\.temp$/){
         push @content, $file;
     }
 }

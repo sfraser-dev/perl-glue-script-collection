@@ -14,6 +14,8 @@ package.json
 package-lock.json
 *.mp3
 *.csv
+*.temp
+*.new
 
 ### Perl ###
 !Build/

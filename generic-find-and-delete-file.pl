@@ -56,10 +56,10 @@ exit;
 
 sub fileWanted{
     my $file = $File::Find::name;
-    if ($file =~ /\.scc$/){
+    if ($file =~ /\.temp$/){
         push @content, $file;
     }
-    if ($file =~ /\.vspscc$/){
+    if ($file =~ /\.swp$/){
         push @content, $file;
     }
     return;

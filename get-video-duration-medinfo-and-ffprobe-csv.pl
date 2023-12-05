@@ -31,6 +31,7 @@ my $fileCount;
 my @probeInfo;
 my @splitter;
 
+# create a log file
 $perlFilenameBase=basename($0);
 $perlFilenameBase=~s/\.pl//;
 $logFile = "$perlFilenameBase\.log";
@@ -67,9 +68,8 @@ close($fh);
 exit;
 
 sub fileWanted {
-    if ($File::Find::name =~ /\.m4v$/){
+    if ($File::Find::name =~ /\.mp4$/){
         push @content, $File::Find::name;
     }
     return;
 }
-
