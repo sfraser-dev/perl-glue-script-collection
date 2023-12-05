@@ -80,7 +80,7 @@ close($fh);
 exit;
 
 sub fileWanted {
-    if ($File::Find::name =~ /\.mpg$/){
+    if ($File::Find::name =~ /\.mp4$/){
         push @content, $File::Find::name;
     }
     return;

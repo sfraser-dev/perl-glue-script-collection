@@ -12,6 +12,8 @@ test2/
 transpile-everything.p*
 package.json
 package-lock.json
+*.mp3
+*.csv
 
 ### Perl ###
 !Build/
