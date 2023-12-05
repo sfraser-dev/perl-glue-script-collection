@@ -3,6 +3,15 @@
 
 # Me
 *.swp
+*.mp4
+images/
+zimg/
+test1/
+test2/
+*.log
+transpile-everything.p*
+package.json
+package-lock.json
 
 ### Perl ###
 !Build/
