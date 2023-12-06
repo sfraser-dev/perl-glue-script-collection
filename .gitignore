@@ -16,6 +16,7 @@ package-lock.json
 *.csv
 *.temp
 *.new
+node_modules/
 
 ### Perl ###
 !Build/

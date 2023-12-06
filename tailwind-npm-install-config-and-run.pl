@@ -57,7 +57,6 @@ sub change_line {
 	my $line_new = $_[2];
 
 	my @new_file;
-	my $re = qr/$line_contains/;
 	open (my $fh, '<', $file_name) or die("Could not open '$file_name': $!");
 	while(my $line = <$fh>) {
 		if ($line =~ m/$line_contains/) {
@@ -132,6 +131,7 @@ sub populate_with_npm_command {
 }
 
 #----- Main -----#
+say "\n\nRun in a new / clean directory\n\n";
 make_path("./css");
 make_path("./tailwind");
 
