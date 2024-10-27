@@ -1,0 +1,6 @@
+- <https://haroldsoh.com/2011/10/07/clone-all-repos-from-a-bitbucket-source/>
+- Cloning all my weebucket repos:
+    - Use Bitbucket API to get all the repo information
+    - Use Perl to get the repo names from this information
+    - Function to clone all (uncloned) repos and function to pull all cloned repos
+- Bitbucket SSH set up for Lubuntu box; no "curl" command in GOW (GNU on Windows)

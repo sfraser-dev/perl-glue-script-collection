@@ -3,6 +3,7 @@
 
 # Me
 *.swp
+*~
 *.mp4
 images/
 zimg/
@@ -10,10 +11,7 @@ test1/
 test2/
 *.log
 transpile-everything.p*
-package.json
-package-lock.json
 *.mp3
-*.csv
 *.temp
 *.new
 node_modules/
