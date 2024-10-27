@@ -2,19 +2,23 @@
 
 # runs with Strawberry Perl: http://strawberryperl.com/
 
-# Copy and paste the SquadNotes sheet "date, GBP and comments" to a new spreadsheet "sheet.ods"
-# Save "sheet.ods" as a CSV file with the following options
-# file -> save as -> csv -> "sheet.txt" (edit filter settings, text csv format, ...
-# ... character set Western Europe, field delimiter :, Text delimiter ", ...
-# ... save cell contents as shown, quote all text cells)
+# - Save "football-squad-notes-csv-analyse.ods" as a CSV file with the following options:
+#   - file -> save as -> csv -> "football-squad-notes-csv-analyse.csv"
+#   - edit filter settings
+#   - text csv format
+#   - character set Western Europe
+#   - field delimiter :
+#   - Text delimiter "
+#   - save cell contents as shown
+#   - quote all text cells
 #
-# Only have to convert "sheet.ods" to "sheet.txt" once, can then work with "sheet.txt"
-# in LibreCalc directly after that.
+# Only have to convert "football-squad-notes-csv-analyse.ods" to "football-squad-notes-csv-analyse.csv" once,
+# can then work with "football-squad-notes-csv-analyse.csv" in LibreCalc directly after that.
 
 use strict;
 use warnings;
 use feature qw(say);
-use File::Find; 
+use File::Find;
 use File::Basename;
 use Cwd;
 use POSIX qw(floor);
@@ -33,11 +37,11 @@ my @splitter;
 my $poundSign = chr(156);
 my $formattedFile;
 
-$folderToAnalyse = "F:\\dev\\abosSpreadsheet";
+$folderToAnalyse = "F:\\dev\\myFootballSpreadsheet";
 checkFolderExists($folderToAnalyse) ? 1 : exit;
 
-# find "sheet.txt" from the folder (and its sub-folders) to analyse
-find( \&fileWanted, $folderToAnalyse); 
+# find "football-squad-notes-csv-analyse.csv" from the folder (and its sub-folders) to analyse
+find( \&fileWanted, $folderToAnalyse);
 analyseFiles(\@contentFile);
 
 exit;
@@ -111,7 +115,7 @@ sub analyseFiles {
             # count lines to make sure all rows in spreadsheet are read
             $lineCountTotal++;
 
-            # payments 
+            # payments
             if ($line =~ /\"Abo payment/) {
                 # split at ":"
                 my @cols = split /:/, $line;
@@ -347,7 +351,7 @@ sub fileWanted {
         say "Error on line: ".__LINE__;
         exit;
     }
-    if ($File::Find::name =~ /sheet\.txt$/){
+    if ($File::Find::name =~ /football-squad-notes-csv-analyse\.csv$/){
         push @contentFile, $File::Find::name;
     }
     return;
